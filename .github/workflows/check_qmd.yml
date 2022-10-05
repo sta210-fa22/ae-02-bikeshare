@@ -5,7 +5,7 @@ on:
     branches: main
   workflow_dispatch:
 
-name: Render qmd
+name: Render-qmd
 
 jobs:
   render-qmd:
