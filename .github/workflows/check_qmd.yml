@@ -37,5 +37,5 @@ jobs:
       - name: Render doc
         uses: quarto-dev/quarto-actions/render@v2
         # Add any command line argument needed
-        run: |
-          quarto render ae-02-bikeshare.qmd
+       # run: |
+        #  quarto render ae-02-bikeshare.qmd
