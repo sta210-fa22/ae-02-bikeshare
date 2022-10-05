@@ -1,5 +1,9 @@
-name: 'Render Quarto project'
-description: 'This action will render an existing quarto project'
+on: 
+  push:
+    branches:
+    - main
+    paths:
+    - 'ae-02-bikeshare.qmd'
 inputs:
   to:
     description: 'Format to render output. Use "all" to generate all outputs, when eg rendering a book in HTML and PDF'

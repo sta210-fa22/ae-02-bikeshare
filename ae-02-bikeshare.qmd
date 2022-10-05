@@ -2,6 +2,7 @@
 title: "AE 02: Bike rentals in Washington, DC"
 subtitle: "Exploring and modeling relationships"
 date: "Sep 05, 2022"
+author: "Add name"
 format: pdf
 editor: visual
 ---
