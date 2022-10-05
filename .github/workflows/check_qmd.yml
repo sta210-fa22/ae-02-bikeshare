@@ -3,16 +3,10 @@ on:
     branches:
     - main
     paths:
-    - 'ae-02-bikeshare.qmd'
-inputs:
-  to:
-    description: 'Format to render output. Use "all" to generate all outputs, when eg rendering a book in HTML and PDF'
-    required: false
-  path:
-    description: 'Subdirectory containing the quarto project to be rendered'
-    required: false
-    default: "."
-runs:
+    - 'ae-02-bikeshare.qmd'  
+name: Check Qmd
+jobs:
+  runs:
   using: 'composite'
   steps: 
     - name: 'Render'
