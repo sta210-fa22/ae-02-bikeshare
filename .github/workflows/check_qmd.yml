@@ -6,7 +6,6 @@ on:
     - 'ae-02-bikeshare.qmd'  
 name: Check Qmd
 jobs:
-  runs:
   using: 'composite'
   steps: 
     - name: 'Render'
