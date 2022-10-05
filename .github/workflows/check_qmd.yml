@@ -34,9 +34,9 @@ jobs:
         with:
           use-public-rspm: true
 
-    - name: Render Quarto Project
-      uses: quarto-dev/quarto-actions/render@v2
-      with:
-        to: pdf # If set, it will be equivalent to `quarto render --to html`
-        path: "ae-02-bikeshare.qmd" # By default, the current working dir is used i.e `quarto render .`
+     - name: Render Quarto Project
+       uses: quarto-dev/quarto-actions/render@v2
+       with:
+         to: pdf # If set, it will be equivalent to `quarto render --to html`
+         path: "ae-02-bikeshare.qmd" # By default, the current working dir is used i.e `quarto render .`
         
