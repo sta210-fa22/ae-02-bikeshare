@@ -7,6 +7,11 @@ on:
 
 name: Render-qmd
 
+inputs:
+  path:
+    description: 'Subdirectory containing the quarto project to be rendered'
+    default: "ae-02-bikeshare.qmd"
+
 jobs:
   render-qmd:
     runs-on: ubuntu-latest
@@ -35,7 +40,7 @@ jobs:
           use-public-rspm: true
 
       - name: Render doc
-        uses: quarto-dev/quarto-actions/render@v2
+       # uses: quarto-dev/quarto-actions/render@v2
         # Add any command line argument needed
-       # run: |
-        #  quarto render ae-02-bikeshare.qmd
+        run: |
+          quarto render ae-02-bikeshare.qmd
