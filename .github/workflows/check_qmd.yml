@@ -1,23 +1,45 @@
-on: 
+on:
   push:
-    branches:
-    - main
-    paths:
-    - 'ae-02-bikeshare.qmd'  
-name: Check Qmd
+    branches: main
+  pull_request:
+    branches: main
+  workflow_dispatch:
+
+name: Build Site
+
 jobs:
-  using: 'composite'
-  steps: 
-    - name: 'Render'
-      run: |
-        if [ "${{ inputs.to }}" == "" ]; then
-          quarto render ${{ inputs.path }}
-        else
-          quarto render ${{ inputs.path }} --to ${{ inputs.to }}
-        fi
-        if [ -f "_book" ]; then
-          echo "QUARTO_OUTPUT=_book" >> $GITHUB_ENV
-        elif [ -f "_site"]; then
-          echo "QUARTO_OUTPUT=_site" >> $GITHUB_ENV
-        fi
-      shell: bash
+  build-website:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Quarto CLI
+        uses: quarto-dev/quarto-actions/install-quarto@v1
+
+      - name: Install libcurl
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev
+
+      - name: Put pandoc in PATH
+        run: |
+          mkdir -p ~/.local/bin
+          ln -s $(dirname $(readlink -f  $(which quarto)))"/pandoc" ~/.local/bin/pandoc
+        shell: bash
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - name: Set up renv
+        uses: r-lib/actions/setup-renv@v2
+        with:
+          cache-version: 2
+
+      - name: Render doc
+        # Add any command line argument needed
+        run: |
+          quarto render
