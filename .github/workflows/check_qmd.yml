@@ -18,8 +18,8 @@ jobs:
       - name: Install Quarto CLI
         uses: quarto-dev/quarto-actions/install-quarto@v1
 
-     - name: Render Quarto Project
-       uses: quarto-dev/quarto-actions/render@v2
-       with:
-         path: "ae-02-bikeshare.qmd" # By default, the current working dir is used i.e `quarto render .`
+      - name: Render Quarto Project
+        uses: quarto-dev/quarto-actions/render@v2
+        with:
+          path: "ae-02-bikeshare.qmd" # By default, the current working dir is used i.e `quarto render .`
         
